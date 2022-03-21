@@ -16,20 +16,40 @@
         },
         {
           "type": "path",
-          "style": "powerline",
-          "powerline_symbol": "",
+          "style": "diamond",
+          "leading_diamond": "\ue0c5",
+          "trailing_diamond": "\ue0b0",
           "foreground": "#f4f4f4",
           "background": "#393939",
           "properties": {
             "style": "full",
-            "template": " {{.Path}} "
+            "template": " {{ .Path }} "
           }
         },
         {
-          "type": "poshgit",
+          "background": "green",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}"
+          ],
+          "foreground": "black",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "branch_ahead_icon": "\u2191",
+            "branch_behind_icon": "\u2193",
+            "branch_gone": "\u2262",
+            "branch_icon": "\ue0a0 ",
+            "branch_identical_icon": "\u2261",
+            "cherry_pick_icon": "\u2713 ",
+            "commit_icon": "\u25b7 ",
+            "fetch_status": true,
+            "merge_icon": "\u25f4 ",
+            "no_commits_icon": "[no commits]",
+            "rebase_icon": "\u2c62 ",
+            "tag_icon": "\u25b6 ",
+            "template": " {{ .HEAD }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }} "
+          },
           "style": "powerline",
-          "powerline_symbol": "\uE0B0",
-          "foreground": "#f4f4f4"
+          "type": "git"
         }
       ]
     },
@@ -65,7 +85,7 @@
         {
           "foreground": "#0f62fe",
           "properties": {
-            "template": "\uFF04"
+            "template": "root"
           },
           "style": "plain",
           "type": "root"
@@ -73,7 +93,7 @@
         {
           "foreground": "#f4f4f4",
           "properties": {
-            "template": "\uFF04"
+            "template": ">"
           },
           "style": "plain",
           "type": "text"
