@@ -6,7 +6,9 @@
       "alignment": "left",
       "segments": [
         { "type":"python",
-          "style":"powerline",
+          "style":"diamond",
+          "leading_diamond": "\ue0d4",
+          "trailing_diamond": "\ue0c6",
           "foreground":"#0f62fe",
           "background":"#393939",
           "properties": {
